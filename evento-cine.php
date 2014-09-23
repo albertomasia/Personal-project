@@ -1,39 +1,21 @@
 <?php
 //class event    
 include_once('custom-post-type.php');
-// 1º Llamamos al constructor y creamos nuestro Post type.
+// 1º Calling the constructor to create the CPT
 $post_type_cine = new Custom_Post_Type('cine');
-//2º Añadimos taxonomia al objeto
+//2º Adding Taxonomy
 $post_type_cine->add_taxonomy( 'genero-cine' );
 /*
 ***** ADD META BOX  ************
 1º parametro Nombre identificador del metabox
 2º Array
-	1º- Nombre del metabox
-	2º- Tipo de dato
-		{
-	    -subtitulo
-		-fecha
-		-hora
-		-tipo_publico
-		-input_largo
-		-input_corto
-		-text
-		-web 
-		-link_comprar
-		-precio
-		-aviso }
-
-
 */
-// Configuramos los meta box personalizados para el evento
+// custom Meta boxes for the event 
 $post_type_cine->add_meta_box( 
 	'Evento cine',
 	array(
 		'Subtitulo' => 'subtitulo',
 		'Sesiones' => 'sesion',
-		//'Fecha' => 'fecha',		
-		//'Hora' => 'hora',		
 		'Recomendación Edad' => 'tipo_publico',
 		'Precio día del espectador' => 'textarea',
 		'Precio Taquilla' => 'precio',
@@ -53,9 +35,9 @@ $post_type_cine->add_meta_box(
 
 		)
 	);
-// Añade el metabox extra para introducir cualquier texto grande. 
+// Extra meta box using wysiwyg editor 
 $post_type_cine->add_meta_box_extra('Sinopsis');
-//cb y title deben aparecer sí o sí. 
+// Defines how to display the columns in the Administrator panel of Wordpress
 $columnas_personalizadas = array(
 					"cb" => "<input type=\"checkbox\" />",
 					"title" => "Película",
